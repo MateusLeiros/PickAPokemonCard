@@ -1,0 +1,15 @@
+.button {
+    color: white;
+    height: 60px;
+    width: 152px;
+    background-color: #A259FF;
+    display: inline-block;
+    position: relative;
+    left: 50rem;
+    font-size: 16px;
+    font-family:'Work Sans', sans-serif;
+    font-weight:550;
+    border-radius: 20px;
+    border: none;
+    
+}
