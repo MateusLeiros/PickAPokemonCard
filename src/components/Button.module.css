@@ -1,9 +1,12 @@
 .button {
     color: white;
+    padding: 0 30px;
     height: 60px;
     width: 152px;
     background-color: #A259FF;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     position: relative;
     left: 50rem;
     font-size: 16px;
@@ -11,5 +14,16 @@
     font-weight:550;
     border-radius: 20px;
     border: none;
-    
+    cursor: pointer;
+}
+
+.button img {
+    vertical-align: middle;
+    padding-bottom: 5px;
+}
+
+.button div {
+    height: 20px;
+    padding-top: 0px;
+    display: inline-block;
 }

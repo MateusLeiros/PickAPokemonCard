@@ -5,7 +5,7 @@ import SignInIcon from '../assets/signIn.svg';
 const Button = () => {
     return (
         <div>
-            <button className={styles.button}><img src={SignInIcon} /> Sign in</button>
+            <button className={styles.button}><img src={SignInIcon} /><div> Sign in</div></button>
         </div>
     )
 }
