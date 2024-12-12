@@ -4,9 +4,11 @@ import SignInIcon from '../assets/signIn.svg';
 
 const Button = () => {
     return (
-        <div>
-            <button className={styles.button}><img src={SignInIcon} /><div> Sign in</div></button>
-        </div>
+            <button className={styles.button}>
+                <div className={styles.textoBotao}>
+                    <img src={SignInIcon} /> Sign in                    
+                </div>
+            </button>
     )
 }
 
