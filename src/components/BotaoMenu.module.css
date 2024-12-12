@@ -1,4 +1,6 @@
 .botao{
+    box-sizing:content-box;
+    padding: 0 20px;
     height: 46px;
     background-color: transparent;
     font-size: 16px;
@@ -11,5 +13,5 @@
 }
 
 .botao:hover {
-    border-color: #646cff;
+    border-color: #A259FF;
 }
