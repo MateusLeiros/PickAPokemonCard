@@ -1,7 +1,7 @@
 .button {
     color: white;
     background-color: #A259FF;
-    width: 152px;
+    min-width: 152px;
     height: 60px;
     font-size: 16px;
     font-family:'Work Sans', sans-serif;
@@ -9,16 +9,31 @@
     border-radius: 20px;
     border: none;
     cursor: pointer;
-    transition: 0.25s background-color;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0);
+    transition: 0.3s background-color;
+    transition: 0.3s scale;
 }
 
-.button:hover {
+.button:hover:enabled {
     background-color: #8528ff;
+    scale: 1.02;
 }
 
-.textoBotao {
+.button:active:enabled{
+    background-color: #681acf;
+    scale:0.96;
+    box-shadow: 0px 0px 15px 5px #35007a;
+}
+
+.textButton {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items:center;
+    justify-content:center;
     gap: 12px;
+}
+
+.button:disabled{
+    background-color: #bb87ff;
+    text-decoration: line-through;
+    cursor:default;
 }
