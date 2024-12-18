@@ -1,0 +1,17 @@
+.class-full-width{
+  width: 100%;
+}
+.class-fixed-width{
+  width: 200px;
+}
+.class-small-width{
+  width: 200px;
+}
+
+
+.classe-disable:disabled{
+  background-color: #1212122a;
+  cursor:default;
+  color: gray;
+  text-decoration: none;
+}
