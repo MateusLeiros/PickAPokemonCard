@@ -4,15 +4,8 @@ import SignInIcon from '../assets/signIn.svg';
 
 const Button = (props:buttonProps) => {
     
-    const [loading, setLoading] = React.useState(false);
-    function handleClick() {
-        setLoading(!loading);
-        console.log(loading);
-    }
-
-
     return (
-            <button disabled={props.disabled} onClick={handleClick} className={styles.button}>
+            <button disabled={props.disabled} onClick={props.onClick} className={styles.button}>
                 <div className={styles.textButton}>
                     <img src={SignInIcon} /> <span>{props.label}</span>                    
                 </div>
