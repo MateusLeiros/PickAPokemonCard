@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import reactLogo from "./assets/react.svg";
+import React from "react";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Button from "./components/Button.tsx";
+import Test from "./test.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [loading, setLoading] = React.useState(false);
+  // React.useEffect(() => {
+  //   console.log('entrou');
+  // }, []);
+
+  const getPokemonCard = async () => {
+    const response = await fetch(
+      "https://api.tcgdex.net/v2/en/cards/swsh3-136"
+    );
+    const json = await response.json();
+    console.log("pegou o pokemon");
+    console.log(json);
+  };
+
+  React.useEffect(() => {
+    console.log("entrou no useEffect");
+    setLoading(true);
+    getPokemonCard();
+    setLoading(false);
+    console.log("saiu do useEffect");
+    // fetch('https://api.tcgdex.net/v2/en/cards/swsh3-136').then((response) => {
+    //   response.json().then((json) => {
+    //     console.log(json);
+    //   });
+    // })
+  }, []);
+
+  function handleClick() {
+    setLoading(!loading);
+    console.log(loading);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      {/* <Button label='Botão' disabled onClick={() => {console.log('botao');}} />
+      <Button label='blablabla whiskas sache' onClick={handleClick} /> */}
+      <Test />
+    </div>
+  );
 }
 
-export default App
+export default App;
