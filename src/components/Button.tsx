@@ -3,11 +3,17 @@ import styles from './Button.module.css';
 import SignInIcon from '../assets/signIn.svg';
 
 const Button = (props:buttonProps) => {
+    const [loading, setLoading] = React.useState(false);
+  
+    function handleClick() {
+        setLoading(true);
+        setTimeout(() => setLoading(false), [2000]);
+    }
     
     return (
-            <button disabled={props.disabled} onClick={props.onClick} className={styles.button + ' ' + props.className}>
+            <button disabled={props.disabled} onClick={handleClick} className={styles.button + ' ' + props.className}>
                 <div className={styles.textButton}>
-                    <img src={SignInIcon} /> <span>{props.isLoading? props.loadingText : props.label}</span>                    
+                    <img src={SignInIcon} /> <span>{loading? "Loading..." : props.label}</span>                    
                 </div>
             </button>
     )

@@ -6,13 +6,22 @@ import Button from "./components/Button.tsx";
 import Test from "./test.tsx";
 
 function App() {
-  const [loading, setLoading] = React.useState(false);
-
-  // const changeButtonText = (text) => {
-  //   setButtonText("Loading...");
-  //   setTimeout(() => setButtonText(text),[1000]);
-  // }
+  /* Eu fiz o loading ser aqui na app da forma que eu comentei aqui debaixo:
   
+  const [loading, setLoading] = React.useState(false);
+  
+  function handleClick() {
+    setLoading(true);
+    setTimeout(() => setLoading(false), [2000]);
+  }
+
+  Problema: Quando clicava em um botão, todos entravam no seu estado de loading 
+  juntos e mudavam pros seus respectivos textos setados no botão la em baixo.
+
+  Solução: Função de loading movida pra dentro do componente botão.
+  
+  */
+
   // const getPokemonCard = async () => {
   //   const response = await fetch(
   //     "https://api.tcgdex.net/v2/en/cards/swsh3-136"
@@ -21,26 +30,6 @@ function App() {
   //   console.log("pegou o pokemon");
   //   console.log(json);
   // };
-
-  // React.useEffect(() => {
-  //   function updateStep() {
-  //     setStep((step) => {
-  //       if(step<3) return step+1;
-  //       else return 1;
-  //     })
-  //   }
-
-  //   setInterval(updateStep, 1000);
-  // }, []);
-
-
-  function handleClick() {
-    setLoading(true);
-    setTimeout(() => setLoading(false), [2000]);
-  }
-  // React.useEffect(() => {
-  //   console.log('entrou');
-  // }, []);
 
 
   // React.useEffect(() => {
@@ -57,8 +46,8 @@ function App() {
   
   return (
     <div>
-      <Button label='Botão' disabled onClick={() => {console.log('botao');}} />
-      <Button label='blablabla whiskas sache' isLoading={loading} loadingText={"Loading..."} onClick={handleClick} />
+      <Button label='Botão' disabled />
+      <Button label='blablabla whiskas sache' />
       <Test />
     </div>
   );

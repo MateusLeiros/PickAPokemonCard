@@ -9,7 +9,7 @@
 }
 
 
-.classe-disable:disabled{
+.class-disabled:disabled{
   background-color: #1212122a;
   cursor:default;
   color: gray;
