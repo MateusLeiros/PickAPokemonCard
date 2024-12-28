@@ -1,6 +1,4 @@
-import reactLogo from "./assets/react.svg";
 import React from "react";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import Button from "./components/Button.tsx";
 import Test from "./test.tsx";
