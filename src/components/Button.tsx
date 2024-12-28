@@ -5,9 +5,9 @@ import SignInIcon from '../assets/signIn.svg';
 const Button = (props:buttonProps) => {
     
     return (
-            <button disabled={props.disabled} onClick={props.onClick} className={styles.button}>
+            <button disabled={props.disabled} onClick={props.onClick} className={styles.button + ' ' + props.className}>
                 <div className={styles.textButton}>
-                    <img src={SignInIcon} /> <span>{props.label}</span>                    
+                    <img src={SignInIcon} /> <span>{props.isLoading? props.loadingText : props.label}</span>                    
                 </div>
             </button>
     )
@@ -18,8 +18,9 @@ type buttonProps = {
     label: string,
     className?: string,
     onClick: () => void,
-    // isLoading?: boolean,
     image?: string,
+    isLoading?: boolean,
+    loadingText: string,
 } /*& typeof defaultButtonProps*/;
 
 // const defaultButtonProps = {
