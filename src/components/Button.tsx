@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Button.module.css';
-// import SignInIcon from '../assets/signIn.svg';
 import ReactSignIn from "../assets/signIn.svg?react";
 
 const Button = (props:buttonProps) => {
@@ -14,7 +13,7 @@ const Button = (props:buttonProps) => {
     return (
             <button disabled={props.disabled} onClick={handleClick} className={styles.button + ' ' + props.className}>
                 <div className={styles.textButton}>
-                     {/* <img src={SignInIcon} />*/} <ReactSignIn /><span>{loading? "Loading..." : props.label}</span> 
+                     {/* <img src={SignInIcon} />*/} <ReactSignIn className={styles.svgIcon} /><span>{loading? "Loading..." : props.label}</span> 
                 </div>
             </button>
     )
@@ -25,7 +24,7 @@ type buttonProps = {
     label: string,
     className?: string,
     onClick?: () => void,
-    image?: string,
+    // image?: string,
     isLoading?: boolean,
     loadingText?: string,
 } /*& typeof defaultButtonProps*/;
