@@ -14,6 +14,7 @@
     transition: 0.3s background-color;
     transition: 0.3s scale;
     overflow: hidden;
+    padding: 0;
 }
 
 .button:hover:enabled {
@@ -30,10 +31,18 @@
 .textButton {
     display: flex;
     align-items:center;
-    justify-content:space-evenly;
-    text-align: left;
+    justify-content:left;
     gap: 12px;
+}
+
+.textButton svg {
+    padding-left: 12px;
+}
+
+.textButton span {
     font-size: clamp(10px, 4vw, 16px);
+    overflow: hidden;
+    white-space: nowrap;
     text-overflow: ellipsis;
 }
 

@@ -12,28 +12,6 @@ export default function Test() {
         }}
       />
       <Button
-        className="class-full-width"
-        label={"width override"}
-        onClick={function (): void {
-          console.log("texto longo");
-        }}
-      />
-      <Button
-        className="class-fixed-width"
-        label={"fixed width override"}
-        onClick={function (): void {
-          console.log("tamanho fixo");
-        }}
-      />
-      <Button
-        disabled={true}
-        className="class-disabled"
-        label={"disabled-override"}
-        onClick={function (): void {
-          console.log("sobreeescrever disables");
-        }}
-      />
-      {/* <Button
         isLoading={true}
         label={"loading"}
         onClick={function (): void {
@@ -41,12 +19,12 @@ export default function Test() {
         }}
       />
       <Button
-        image={} //novo icone
+        // image={} //novo icone
         label={"loading"}
         onClick={function (): void {
           console.log("sobrrescrever icone");
         }}
-      /> */}
+      />
     </div>
   );
 }

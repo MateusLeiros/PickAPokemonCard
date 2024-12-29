@@ -20,28 +20,6 @@ function App() {
   
   */
 
-  // const getPokemonCard = async () => {
-  //   const response = await fetch(
-  //     "https://api.tcgdex.net/v2/en/cards/swsh3-136"
-  //   );
-  //   const json = await response.json();
-  //   console.log("pegou o pokemon");
-  //   console.log(json);
-  // };
-
-
-  // React.useEffect(() => {
-    // console.log("entrou no useEffect");
-    // getPokemonCard();
-    // console.log("saiu do useEffect");
-    // fetch('https://api.tcgdex.net/v2/en/cards/swsh3-136').then((response) => {
-    //   response.json().then((json) => {
-    //     console.log(json);
-    //   });
-    // })
-  // }, []);
-
-  
   return (
     <div>
       <Button label='Botão' disabled />
