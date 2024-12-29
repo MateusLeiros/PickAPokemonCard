@@ -1,58 +1,48 @@
 .button {
-    color: orange;
-    background-color: #A259FF;
-    min-width: 152px;
-    max-width: 230px;
-    height: 60px;
-    font-size: 16px;
-    font-family:'Work Sans', sans-serif;
-    font-weight:550;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 0px 0px rgba(0,0,0,0);
-    transition: 0.3s background-color;
-    transition: 0.3s scale;
-    overflow: hidden;
-    padding: 0;
+  background: #a259ff;
+  border: none;
+  height: 60px;
+  font-size: 16px;
+  font-weight: 550;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+  transition: 0.3s background-color;
+  transition: 0.3s scale;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
 }
 
 .button:hover:enabled {
-    background-color: #8528ff;
-    scale: 1.02;
+  background-color: #8528ff;
+  scale: 1.02;
+}
+.button:active:enabled {
+  background-color: #681acf;
+  scale: 0.96;
+  box-shadow: 0px 0px 2px 2px #681acf;
 }
 
-.button:active:enabled{
-    background-color: #681acf;
-    scale:0.96;
-    box-shadow: 0px 0px 15px 5px #35007a;
+.button:disabled {
+  background-color: #bb87ff;
+  text-decoration: line-through;
+  cursor: default;
 }
 
-.textButton {
-    display: flex;
-    align-items:center;
-    justify-content:left;
-    gap: 12px;
+.button .label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
 }
-
-.textButton svg {
-    padding-left: 12px;
+.button .label span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
-.textButton span {
-    font-size: clamp(10px, 4vw, 16px);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.button:disabled{
-    background-color: #bb87ff;
-    text-decoration: line-through;
-    cursor:default;
-}
-
-.svgIcon{
-    min-width: 20px;
-    min-height: 20px;
+.button .label .icon {
+  width: 20px;
+  height: 20px;
 }
