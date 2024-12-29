@@ -12,6 +12,11 @@ export default function Button2({
   const buttonClasses = [className, styles.button];
   const labelText = isLoading ? loadingText : label;
 
+  let iconElement: React.ReactElement | undefined = undefined;
+  if (icon !== undefined) {
+    iconElement = <div className={styles.icon}>{icon}</div>;
+  }
+  
   return (
     <button
       className={buttonClasses.join(" ")}
@@ -19,7 +24,7 @@ export default function Button2({
       onClick={onClick}
     >
       <div className={styles.label}>
-        <div className={styles.icon}>{icon}</div>
+        {iconElement}
         <span>{labelText}</span>
       </div>
     </button>
