@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import SignIn from "./assets/signIn.svg?react";
-import Button from "./components/Button.tsx";
+// import SignIn from "./assets/signIn.svg?react";
+// import Button from "./components/Button.tsx";
 import Menu from "./components/Menu.tsx";
 
 

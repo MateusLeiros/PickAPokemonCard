@@ -16,10 +16,13 @@ export default function Menu(props: menuProps) {
             setLoading(false);
         }, 2000);
     }
+
+    const menuClasses = [styles.menu, props.className];
+    const linkClasses = [styles.links, props.linksClasses];
     
   return (
-    <div className={styles.menu + ' ' + props.className}>
-        <div className={styles.links + ' ' + props.linksClasses}>
+    <div className={menuClasses.join(" ")}>
+        <div className={linkClasses.join(" ")}>
             <a>Home</a>
             <a>Marketing</a>
             <a>Membership</a>
