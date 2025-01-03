@@ -15,6 +15,7 @@
 }
 
 .links a {
+    font-family: WorkSans;
     color: white;
     display: flex;
     align-items: center;
@@ -24,6 +25,7 @@
     height: 50px;
     font-size: 16px;
     max-width: 250px;
+    text-decoration: none;
     white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
