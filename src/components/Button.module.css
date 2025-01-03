@@ -36,7 +36,7 @@
   justify-content: center;
   gap: 12px;
   width: 100%;
-  font-family: WorkSansBold;
+  font-family: WorkSansSemiBold;
 }
 .button .label span {
   white-space: nowrap;
