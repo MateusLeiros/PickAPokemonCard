@@ -19,15 +19,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* box-sizing: border-box; */
-    padding: 0 20px;
+    box-sizing: border-box;
+    padding: 0 18px;
     height: 50px;
     font-size: 16px;
+    max-width: 250px;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    border: transparent 2px solid;
+    transition: 0.2s border;
 }
 
 .links a:hover {
-    box-sizing: border-box;
-    border: black 2px solid;
-    text-decoration: underline;
+    border: white 2px solid;
     cursor: pointer;
 }

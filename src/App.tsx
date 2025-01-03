@@ -17,9 +17,12 @@ function App() {
   //   }, 2000);
   // }
 
+  const pageNames = ['Menu', 'Marketing', 'Contact', 'Learn More', 'Pokemon'];
+  const pageLinks = ['#', '#', '#', '#', '#'];
+
   return (
     <div>
-      <Menu />
+      <Menu pageNames={pageNames} pageLinks={pageLinks} />
     </div>
   );
 }
