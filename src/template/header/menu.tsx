@@ -4,7 +4,7 @@ import Button from "../../components/Button.tsx";
 import SignIn from "../../assets/signIn.svg?react";
 
 
-export default function Menu() {
+export default function Menu({pageNames}:menuProps) {
 
     const [loading, setLoading] = React.useState(false);
 
@@ -16,14 +16,18 @@ export default function Menu() {
             setLoading(false);
         }, 2000);
     }
+
+    let linksArray=[];
+    if (pageNames !== undefined) {
+      pageNames.forEach((element) => {
+        linksArray.push(<a href={element.url}>{element.name}</a>);
+      });
+    }
     
   return (
     <div className={styles.menu}>
         <div className={styles.links}>
-            <a href='#'>See Pokémons</a>
-            <a href='#'>Create a Deck</a>
-            <a href='#'>Contact</a>
-            <a href='#'>Mini-game (soon)</a>
+          {linksArray}
         </div>
         <Button
         label={"Sign Up"}
@@ -34,4 +38,13 @@ export default function Menu() {
       />
     </div>
   );
+}
+
+type pageLink = {
+  name: string,
+  url: string,
+}
+  
+type menuProps = {
+  pageNames: Array<pageLink>,
 }
