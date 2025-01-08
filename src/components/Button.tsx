@@ -9,7 +9,7 @@ export default function Button2({
   onClick,
   icon,
 }: buttonProps) {
-  const buttonClasses = [className, styles.button];
+  const buttonClasses = [styles.button, className];
   const labelText = isLoading ? loadingText : label;
 
   let iconElement: React.ReactElement | undefined = undefined;
