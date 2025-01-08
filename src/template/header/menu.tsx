@@ -4,7 +4,7 @@ import Button from "../../components/Button.tsx";
 import SignIn from "../../assets/signIn.svg?react";
 
 
-export default function Menu({pageNames}:menuProps) {
+export default function Menu({links}:menuProps) {
 
     const [loading, setLoading] = React.useState(false);
 
@@ -18,11 +18,7 @@ export default function Menu({pageNames}:menuProps) {
     }
 
     let linksArray=[];
-    if (pageNames !== undefined) {
-      pageNames.forEach((element) => {
-        linksArray.push(<a href={element.url}>{element.name}</a>);
-      });
-    }
+    if (links !== undefined) {linksArray = links.map((element) => <a href={element.url}>{element.name}</a>);};
     
   return (
     <div className={styles.menu}>
@@ -46,5 +42,5 @@ type pageLink = {
 }
   
 type menuProps = {
-  pageNames: Array<pageLink>,
+  links: Array<pageLink>,
 }

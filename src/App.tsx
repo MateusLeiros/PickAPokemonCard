@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div>
-      <Menu pageNames={links}/>
+      <Menu links={links}/>
     </div>
   );
 }
