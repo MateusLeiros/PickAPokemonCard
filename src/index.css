@@ -22,3 +22,8 @@
     font-family: WorkSansSemiBold;
     src: url(./fonts/WorkSans-SemiBold.ttf);
 }
+
+*{
+    margin: 0;
+    padding: 0;
+}

@@ -1,7 +1,6 @@
 .menu {
     height: 60px;
     max-width: 50%;
-    background-color: #2b2b2b;
     display: flex;
     justify-content: right;
     gap: 10px;
