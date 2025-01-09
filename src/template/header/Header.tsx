@@ -1,6 +1,5 @@
-import React from "react";
 import styles from "./Header.module.css";
-import Menu from "./Menu.tsx"
+import Menu from "./Menu.tsx";
 import PokemonIcon from "../../assets/pbIcon.svg?react";
 
 
