@@ -18,6 +18,7 @@ function App() {
   return (
     <div>
       <Button
+        size={'medium'}
         label={"Botão"}
         onClick={handleClick}
         isLoading={loading}
