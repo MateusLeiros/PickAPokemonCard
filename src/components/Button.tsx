@@ -8,15 +8,27 @@ export default function Button2({
   loadingText = "Loading...",
   onClick,
   icon,
+  size,
 }: buttonProps) {
-  const buttonClasses = [className, styles.button];
   const labelText = isLoading ? loadingText : label;
+
+  // Função similar ao switch
+  const buttonSizeMap: { [key in size]: string } = {
+    square: styles.sqrBtn,
+    small: styles.smallBtn,
+    medium: styles.mediumBtn,
+    large: styles.largeBtn
+  };
+
+  const buttonClass = buttonSizeMap[size];
+
+  const buttonClasses = [styles.button, buttonClass, className];
 
   let iconElement: React.ReactElement | undefined = undefined;
   if (icon !== undefined) {
     iconElement = <div className={styles.icon}>{icon}</div>;
   }
-  
+
   return (
     <button
       className={buttonClasses.join(" ")}
@@ -38,4 +50,7 @@ type buttonProps = {
   icon?: React.ReactElement;
   isLoading?: boolean;
   loadingText?: string;
+  size: size;
 };
+
+type size = "square" | "small" | "medium" | "large";

@@ -26,6 +26,7 @@ export default function Menu({ links }: menuProps) {
     <div className={styles.menu}>
       <div className={styles.links}>{linksArray}</div>
       <Button
+        size={'medium'}
         label={"Sign Up"}
         loadingText="Loading"
         onClick={handleClick}
