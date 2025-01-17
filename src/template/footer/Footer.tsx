@@ -10,12 +10,12 @@ export default function Footer() {
   //   ];
 
   return (
-    <div className={styles.footer}>
+    <div className="flex justify-around items-center w-full h-36 bg-mygray bottom-0">
       <div className={styles.logo}>
         <PokemonIcon className={styles.pbIcon} />
         <span className={styles.logoText}>Pick a Pokemon Card</span>
       </div>
-      <div className={styles.contact}>
+      <div className="flex flex-col text-sm text-white font-WorkSans">
         <span>Created by Mateus Leiros</span>
         <span>mateusleiros@gmail.com</span>
       </div>
