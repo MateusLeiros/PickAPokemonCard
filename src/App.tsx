@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Header from "./template/header/Header.tsx";
+import Footer from "./template/footer/Footer.tsx"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <div className="bg-sky-800 aspect-square rounded"></div>
         <div className="bg-sky-900 aspect-square rounded"></div>
       </div>
+      <Footer />
     </div>
   );
 }
