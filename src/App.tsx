@@ -1,7 +1,11 @@
 import "./App.css";
 import Header from "./template/header/Header.tsx";
 import Footer from "./template/footer/Footer.tsx";
-import Home from "./template/pages/Home.tsx";
+import Home from "./pages/Home.tsx";
+import CreateADeck from "./pages/CreateADeck.tsx";
+import Contact from "./pages/Contact.tsx";
+import Game from "./pages/Game.tsx";
+import NotFound from "./pages/NotFound.tsx";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
@@ -11,6 +15,10 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home/>} />
+          <Route path="Create-A-Deck" element={<CreateADeck/>} />
+          <Route path="Contact" element={<Contact/>} />
+          <Route path="Game" element={<Game/>} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
         <div className="grid grid-cols-10 gap-2">
           <div className="bg-green-400 aspect-circle rounded"></div>
