@@ -9,11 +9,10 @@ import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
   return (
-    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="Home" element={<Home />} />
+            <Route path="Home" index element={<Home />} />
             <Route path="Create-A-Deck" element={<CreateADeck />} />
             <Route path="Contact" element={<Contact />} />
             <Route path="Game" element={<Game />} />
@@ -21,7 +20,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </div>
   );
 }
 

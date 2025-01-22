@@ -11,6 +11,7 @@ export default {
     extend: {
       colors: {
         'mygray': '#323232',
+        'menugray':'#2b2b2b',
       },
     },
     fontFamily: {
