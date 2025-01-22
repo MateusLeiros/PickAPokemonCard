@@ -9,17 +9,17 @@ import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="Home" index element={<Home />} />
-            <Route path="Create-A-Deck" element={<CreateADeck />} />
-            <Route path="Contact" element={<Contact />} />
-            <Route path="Game" element={<Game />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="Create-A-Deck" element={<CreateADeck />} />
+          <Route path="Contact" element={<Contact />} />
+          <Route path="Game" element={<Game />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
