@@ -4,10 +4,10 @@ import Logo from "../../components/Logo.tsx";
 
 export default function Header() {
   const links = [
-    { name: "See Pokémons", url: "#" },
-    { name: "Create a Deck", url: "#" },
-    { name: "Contact", url: "#" },
-    { name: "Mini-game (soon)", url: "#" },
+    { name: "See Pokémons", url: "/" },
+    { name: "Create a Deck", url: "Create-A-Deck" },
+    { name: "Contact", url: "Contact" },
+    { name: "Mini-game (soon)", url: "Game" },
   ];
 
   return (

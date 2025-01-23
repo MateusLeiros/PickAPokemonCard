@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Menu.module.css";
 import Button from "../../components/Button.tsx";
 import SignIn from "../../assets/signIn.svg?react";
+import {NavLink} from "react-router";
 
 export default function Menu({ links }: MenuProps) {
   const [loading, setLoading] = React.useState(false);
@@ -16,7 +17,7 @@ export default function Menu({ links }: MenuProps) {
   }
 
   const linksArray: Array<JSX.Element> = links.map((element) => (
-    <a href={element.url}>{element.name}</a>
+    <NavLink to={element.url}>{element.name}</NavLink>
   ));
 
   return (
