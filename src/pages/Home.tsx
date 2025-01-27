@@ -1,5 +1,6 @@
 import React from "react";
 import { getCardByID, getCardByID2 } from "../api/GetCard.tsx";
+import axios from 'axios';
 
 export default function Home() {
   const [cardData, setCardData] = React.useState(null);
@@ -23,11 +24,17 @@ export default function Home() {
     fetchCardData();
   }, []);
   console.log(cardData);
+
+  let pkmImg='';
+  if (cardData){
+    pkmImg = cardData.image + '/high.png';
+  }
   
   return (
     <div>
       <h1>Essa é a Home</h1>
       <label>{cardData===null? '' : cardData.name}</label>
+      <img src={pkmImg}></img>
     </div>
   );
   
