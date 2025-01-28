@@ -13,6 +13,10 @@ export default {
         'mygray': '#323232',
         'menugray':'#2b2b2b',
       },
+      animation: {
+        bounce: 'bounce 1s infinite',
+        'spin-bounce': 'spin 1s infinite, bounce 1s infinite',
+      },
     },
     fontFamily: {
       'WorkSans': 'WorkSans',

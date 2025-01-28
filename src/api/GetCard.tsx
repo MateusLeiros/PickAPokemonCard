@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function getCardByID(pkmId: number) {
   const api = "https://api.tcgdex.net/v2/en/cards/swsh3-" + pkmId;
   const result = fetch(api)
@@ -18,4 +20,17 @@ export async function getCardByID2(pkmId: number) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function getCardByIdAxios(pkmId: number) {
+  const api = "https://api.tcgdex.net/v2/en/cards/swsh3-" + pkmId;
+
+  axios
+    .get(api)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
