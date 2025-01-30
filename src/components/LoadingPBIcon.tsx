@@ -5,7 +5,7 @@ export default function LoadingPBIcon({ isLoading }: loadingProps) {
   return (
     <div className={isLoading ? styles.isLoading : styles.isHidden}>
       <PokemonIcon className={styles.loading}></PokemonIcon>
-      <span>Loading...</span>
+      <span> Loading...</span>
     </div>
   );
 }

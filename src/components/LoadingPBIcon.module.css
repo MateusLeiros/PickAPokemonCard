@@ -6,7 +6,11 @@
 }
 
 .isLoading{
-    display:block;
+    position:absolute;
+    z-index:500;
+    background-color: #00000085;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 .isHidden{

@@ -4,16 +4,24 @@ import { getCardByID } from "../api/GetCard.tsx";
 import pkmBack from "../assets/pkmBack.jpg";
 
 export default function Home() {
-  const [cardData, setCardData] = React.useState(null);
+  const [card1Data, setCard1Data] = React.useState(null);
+  const [card2Data, setCard2Data] = React.useState(null);
+  const [card3Data, setCard3Data] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [, setError] = React.useState(null);
-  const pkmId = Math.floor(Math.random() * 201 + 1);
+  const pkmId1 = Math.floor(Math.random() * 201 + 1);
+  const pkmId2 = Math.floor(Math.random() * 201 + 1);
+  const pkmId3 = Math.floor(Math.random() * 201 + 1);
 
   const fetchCardData = async () => {
     try {
       setLoading(true);
-      const data = await getCardByID(pkmId);
-      setCardData(data);
+      let data = await getCardByID(pkmId1);
+      setCard1Data(data);
+      data = await getCardByID(pkmId2);
+      setCard2Data(data);
+      data = await getCardByID(pkmId3);
+      setCard3Data(data);
       setLoading(false);
     } catch (err) {
       setError(err);
@@ -24,25 +32,46 @@ export default function Home() {
     fetchCardData();
   }, []);
 
-  let pkmImg = "";
-  if (cardData) {
-    pkmImg = cardData.image + "/low.png";
-  }
+  let pkmImg1,
+    pkmImg2,
+    pkmImg3 = "";
+  if (card1Data) pkmImg1 = card1Data.image + "/low.png";
+  if (card2Data) pkmImg2 = card2Data.image + "/low.png";
+  if (card3Data) pkmImg3 = card3Data.image + "/low.png";
 
   return (
     <div>
-      <h1>Essa é a Home</h1>
-      <div className="flex flex-col items-center h-[432px] w-[90vw] border-4 border-blue-500 rounded-3xl">
+      <div className="mt-10 flex justify-around items-center h-[450px] w-[90vw] justify-self-center border-4 border-blue-500 rounded-3xl">
+        <div className="w-1/3 flex flex-col gap-5 items-center">
+          <span>Meet some Pokemon Cards:</span>
+          <label className="text-4xl">
+            {card1Data === null ? "" : card1Data.name}
+          </label>
+          <label className="text-4xl">
+            {card2Data === null ? "" : card2Data.name}
+          </label>
+          <label className="text-4xl">
+            {card3Data === null ? "" : card3Data.name}
+          </label>
+        </div>
+
         <LoadingPBIcon isLoading={loading}></LoadingPBIcon>
-        <label className="text-4xl">
-          {cardData === null ? "" : cardData.name}
-        </label>
-        <img
-          src={loading ? pkmBack : pkmImg}
-          className="max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.2] hover:brightness-100"
-        ></img>
+
+        <div className="flex gap-2">
+          <img
+            src={loading ? pkmBack : pkmImg1}
+            className="max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.25] hover:brightness-100 hover:z-20"
+          ></img>
+          <img
+            src={loading ? pkmBack : pkmImg2}
+            className="max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.25] hover:brightness-100 hover:z-20"
+          ></img>
+          <img
+            src={loading ? pkmBack : pkmImg3}
+            className="max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.25] hover:brightness-100 hover:z-20"
+          ></img>
+        </div>
       </div>
     </div>
   );
 }
-// brightness-50 hover:scale-[1.2] hover:brightness-100

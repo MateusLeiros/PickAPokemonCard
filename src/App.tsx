@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./pages/Home.tsx";
 import CreateADeck from "./pages/CreateADeck.tsx";
 import Contact from "./pages/Contact.tsx";
