@@ -2,26 +2,20 @@ import React from "react";
 import LoadingPBIcon from "../components/LoadingPBIcon.tsx";
 import { getCardByID } from "../api/GetCard.tsx";
 import pkmBack from "../assets/pkmBack.jpg";
+import Button from "../components/Button.tsx";
 
 export default function Home() {
   const [card1Data, setCard1Data] = React.useState(null);
-  const [card2Data, setCard2Data] = React.useState(null);
-  const [card3Data, setCard3Data] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
-  const [, setError] = React.useState(null);
+  const [, setError] = React.useState<unknown>(null);
   const pkmId1 = Math.floor(Math.random() * 201 + 1);
-  const pkmId2 = Math.floor(Math.random() * 201 + 1);
-  const pkmId3 = Math.floor(Math.random() * 201 + 1);
+  const [newCard, setNewCard] = React.useState(false);
 
   const fetchCardData = async () => {
     try {
       setLoading(true);
-      let data = await getCardByID(pkmId1);
+      const data = await getCardByID(pkmId1);
       setCard1Data(data);
-      data = await getCardByID(pkmId2);
-      setCard2Data(data);
-      data = await getCardByID(pkmId3);
-      setCard3Data(data);
       setLoading(false);
     } catch (err) {
       setError(err);
@@ -30,14 +24,14 @@ export default function Home() {
 
   React.useEffect(() => {
     fetchCardData();
-  }, []);
+  }, [newCard]);
 
-  let pkmImg1,
-    pkmImg2,
-    pkmImg3 = "";
+  let pkmImg1;
   if (card1Data) pkmImg1 = card1Data.image + "/low.png";
-  if (card2Data) pkmImg2 = card2Data.image + "/low.png";
-  if (card3Data) pkmImg3 = card3Data.image + "/low.png";
+
+  const handleClick = () => {
+    setNewCard(!newCard);
+  }
 
   return (
     <div>
@@ -47,12 +41,7 @@ export default function Home() {
           <label className="text-4xl">
             {card1Data === null ? "" : card1Data.name}
           </label>
-          <label className="text-4xl">
-            {card2Data === null ? "" : card2Data.name}
-          </label>
-          <label className="text-4xl">
-            {card3Data === null ? "" : card3Data.name}
-          </label>
+          <Button label="New Card" size="small" onClick={handleClick}/>
         </div>
 
         <LoadingPBIcon isLoading={loading}></LoadingPBIcon>
@@ -60,15 +49,7 @@ export default function Home() {
         <div className="flex gap-2">
           <img
             src={loading ? pkmBack : pkmImg1}
-            className="max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.25] hover:brightness-100 hover:z-20"
-          ></img>
-          <img
-            src={loading ? pkmBack : pkmImg2}
-            className="max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.25] hover:brightness-100 hover:z-20"
-          ></img>
-          <img
-            src={loading ? pkmBack : pkmImg3}
-            className="max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.25] hover:brightness-100 hover:z-20"
+            className={loading? "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700" : "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.25] hover:brightness-100 hover:z-20"}
           ></img>
         </div>
       </div>
