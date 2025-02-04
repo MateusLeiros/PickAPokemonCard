@@ -10,7 +10,6 @@ export default function Home() {
   const [loading, setLoading] = React.useState(false);
   const [, setError] = React.useState<unknown>(null);
   const pkmId1 = Math.floor(Math.random() * 201 + 1);
-  const [newCard, setNewCard] = React.useState(false);
 
   const fetchCardData = async () => {
     try {
@@ -25,13 +24,35 @@ export default function Home() {
 
   React.useEffect(() => {
     fetchCardData();
-  }, [newCard]);
+  }, []);
+
+  // const fetchCardData = React.useCallback(async (pkmId1: number) => {
+  //   try {
+  //     setLoading(true);
+  //     const data = await getCardByID(pkmId1);
+  //     setCard1Data(data);
+  //     setLoading(false);
+  //   } catch (err) {
+  //     setError(err);
+  //   }
+  // }, []);
+
+  // React.useEffect(() => {
+  //   fetchCardData(Math.floor(Math.random() * 201 + 1));
+  // }, [fetchCardData]);
 
   let pkmImg1;
   if (card1Data) pkmImg1 = card1Data.image + "/low.png";
 
   const handleClick = () => {
-    setNewCard(!newCard);
+    fetchCardData();
+  };
+
+  const imageClass = [
+    "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700",
+  ];
+  if (loading) {
+    imageClass.push("hover:scale-[1.25] hover:brightness-100 hover:z-20");
   }
 
   return (
@@ -42,7 +63,7 @@ export default function Home() {
           <label className="text-4xl">
             {card1Data === null ? "" : card1Data.name}
           </label>
-          <Button label="New Card" size="small" onClick={handleClick}/>
+          <Button label="New Card" size="small" onClick={handleClick} isLoading={loading} />
         </div>
 
         <LoadingPBIcon isLoading={loading}></LoadingPBIcon>
@@ -50,14 +71,14 @@ export default function Home() {
         <div className="flex gap-2">
           <img
             src={loading ? pkmBack : pkmImg1}
-            className={loading? "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700" : "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700 hover:scale-[1.25] hover:brightness-100 hover:z-20"}
+            className={imageClass.join(" ")}
           ></img>
         </div>
       </div>
 
       <br />
 
-      <Carrossel numberOfCards={3}/>
+      <Carrossel numberOfCards={2} />
     </div>
   );
 }
