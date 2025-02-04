@@ -28,9 +28,12 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
     fetchCardData();
   }, []);
 
-  // let pkmImgs = [];
-
-  // pkmImgs = cardData.map((x) => x.image + "/low.png");
+  const imageClass = [
+    "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700",
+  ];
+  if (!loading) {
+    imageClass.push("hover:scale-[1.25] hover:brightness-100 hover:z-20");
+  }
 
   return (
     <div className="mt-10 flex justify-center items-center h-[450px] w-[90vw] justify-self-center border-4 border-blue-500 rounded-3xl">

@@ -9,24 +9,9 @@ export default function Home() {
   const [card1Data, setCard1Data] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
   const [, setError] = React.useState<unknown>(null);
-  const pkmId1 = Math.floor(Math.random() * 201 + 1);
+  // const pkmId1 = Math.floor(Math.random() * 201 + 1);
 
-  const fetchCardData = async () => {
-    try {
-      setLoading(true);
-      const data = await getCardByID(pkmId1);
-      setCard1Data(data);
-      setLoading(false);
-    } catch (err) {
-      setError(err);
-    }
-  };
-
-  React.useEffect(() => {
-    fetchCardData();
-  }, []);
-
-  // const fetchCardData = React.useCallback(async (pkmId1: number) => {
+  // const fetchCardData = async () => {
   //   try {
   //     setLoading(true);
   //     const data = await getCardByID(pkmId1);
@@ -35,23 +20,38 @@ export default function Home() {
   //   } catch (err) {
   //     setError(err);
   //   }
-  // }, []);
+  // };
 
   // React.useEffect(() => {
-  //   fetchCardData(Math.floor(Math.random() * 201 + 1));
-  // }, [fetchCardData]);
+  //   fetchCardData();
+  // }, []);
+
+  const fetchCardData = React.useCallback(async (pkmId1: number) => {
+    try {
+      setLoading(true);
+      const data = await getCardByID(pkmId1);
+      setCard1Data(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    fetchCardData(Math.floor(Math.random() * 201 + 1));
+  }, [fetchCardData]);
 
   let pkmImg1;
   if (card1Data) pkmImg1 = card1Data.image + "/low.png";
 
   const handleClick = () => {
-    fetchCardData();
+    fetchCardData(Math.floor(Math.random() * 201 + 1));
   };
 
   const imageClass = [
     "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700",
   ];
-  if (loading) {
+  if (!loading) {
     imageClass.push("hover:scale-[1.25] hover:brightness-100 hover:z-20");
   }
 
