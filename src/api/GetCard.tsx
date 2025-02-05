@@ -5,7 +5,15 @@ export async function getCardByID(pkmId: number) {
   return response.data;
 }
 
-type Card = {
+export type Card = {
   id: number,
-  title: string,
+  category: string,
+  image: string,
+  name: string,
+  set: {
+    cardCount:{
+      official: number,
+      total: number,
+    }
+  }
 }
