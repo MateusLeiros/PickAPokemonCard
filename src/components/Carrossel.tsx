@@ -1,32 +1,30 @@
 import React from "react";
 import pkmBack from "../assets/pkmBack.jpg";
-import { getCardByID } from "../api/GetCard.tsx";
+import { getCardByID, Card } from "../api/GetCard.tsx";
 
 export default function Carrossel({ numberOfCards }: carrosselProps) {
-  const [cardData, setCardData] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+  const [cardData, setCardData] = React.useState<Array<Card>>([]);
+  const [loading, setLoading] = React.useState<boolean>(false);
   const [, setError] = React.useState<unknown>(null);
 
-  const cardsResult = [];
-
-  const fetchCardData = async () => {
+  const fetchCarrosselData = React.useCallback(async () => {
     try {
+      const newArray = [];
       setLoading(true);
       for (let i = 0; i < numberOfCards; i++) {
-        const pkmId = Math.floor(Math.random() * 201 + 1);
-        const data = await getCardByID(pkmId);
-        cardsResult.push(data);
+        const data = await getCardByID(Math.floor(Math.random() * 201 + 1));
+        newArray.push(data);
       }
-      setCardData(cardsResult);
+      setCardData(newArray);
     } catch (err) {
       setError(err);
     }
     setLoading(false);
-  };
+  },[numberOfCards]);
 
   React.useEffect(() => {
-    fetchCardData();
-  }, []);
+    fetchCarrosselData();
+  }, [fetchCarrosselData]);
 
   const imageClass = [
     "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700",
@@ -37,9 +35,10 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
 
   return (
     <div className="mt-10 flex justify-center items-center h-[450px] w-[90vw] justify-self-center border-4 border-blue-500 rounded-3xl">
-      {cardData.map((imagem) => (
+      {cardData.map((card) => (
         <img
-          src={loading ? pkmBack : imagem.image + "/low.png"}
+          key={card.id}
+          src={loading ? pkmBack : card.image + "/low.png"}
           className={
             loading
               ? "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700"

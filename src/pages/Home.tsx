@@ -62,7 +62,7 @@ export default function Home() {
 
       <br />
 
-      <Carrossel numberOfCards={2} />
+      <Carrossel numberOfCards={5} />
     </div>
   );
 }
