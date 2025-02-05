@@ -1,0 +1,27 @@
+.loading {
+    display: inline;
+    width: 30px;
+    height: 30px; 
+    animation: spin infinite linear 2000ms;
+}
+
+.isLoading{
+    position:absolute;
+    z-index:500;
+    background-color: #00000085;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.isHidden{
+    display: none;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
