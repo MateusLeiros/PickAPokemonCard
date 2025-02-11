@@ -8,6 +8,7 @@ export default {
       colors: {
         'mygray': '#323232',
         'menugray':'#2b2b2b',
+        'buttoncolor': '#a259ff',
       },
       animation: {
         bounce: 'bounce 1s infinite',

@@ -33,7 +33,7 @@ export default function Home() {
   };
 
   const imageClass = [
-    "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700",
+    "max-h-[350px] border-4 border-buttoncolor rounded-3xl brightness-50 transition duration-700",
   ];
   if (!loading) {
     imageClass.push("hover:scale-[1.25] hover:brightness-100 hover:z-20");
@@ -41,10 +41,10 @@ export default function Home() {
 
   return (
     <div>
-      <div className="mt-10 flex justify-around items-center h-[450px] w-[90vw] justify-self-center border-4 border-blue-500 rounded-3xl">
+      <div className="mt-10 flex justify-self-start justify-around items-center h-[450px] w-[40vw] border-4 border-buttoncolor rounded-3xl">
         <div className="w-1/3 flex flex-col gap-5 items-center">
           <span>Meet some Pokemon Cards:</span>
-          <label className="text-4xl">
+          <label className="text-3xl text-center">
             {card1Data === undefined ? "" : card1Data.name}
           </label>
           <Button label="New Card" size="small" onClick={handleClick} isLoading={loading} />

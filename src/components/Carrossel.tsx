@@ -55,14 +55,14 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
   }, [fetchCarrosselData]);
 
   const imageClass = [
-    "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700",
+    "max-h-[350px] border-4 border-buttoncolor rounded-3xl brightness-50 transition duration-700",
   ];
   if (!loading) {
     imageClass.push("hover:scale-[1.25] hover:brightness-100 hover:z-20");
   }
 
   return (
-    <div className="mt-10 flex justify-around items-center h-[450px] w-[90vw] justify-self-center border-4 border-blue-500 rounded-3xl">
+    <div className="mt-10 flex justify-around items-center h-[450px] w-[90vw] justify-self-center border-4 border-buttoncolor rounded-3xl">
       <Button
         size="small"
         label="<<<"
@@ -77,8 +77,8 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
             src={loading ? pkmBack : card.image + "/low.png"}
             className={
               index != focusIndex
-                ? "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700"
-                : "z-40 border-4 border-blue-500 rounded-3xl transition duration-700 scale-[1.25]"
+                ? "max-h-[350px] border-4 border-buttoncolor rounded-3xl brightness-50 transition duration-700"
+                : "z-40 border-4 border-buttoncolor rounded-3xl transition duration-700 scale-[1.25]"
             }
           ></img>
         ))}
