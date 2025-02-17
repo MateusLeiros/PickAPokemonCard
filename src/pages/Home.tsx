@@ -3,7 +3,7 @@ import LoadingPBIcon from "../components/LoadingPBIcon.tsx";
 import { getCardByID, Card } from "../api/GetCard.tsx";
 import pkmBack from "../assets/pkmBack.jpg";
 import Button from "../components/Button.tsx";
-import Carrossel from "../components/Carrossel.tsx";
+import Selector from "../components/Selector.tsx";
 
 export default function Home() {
   const [card1Data, setCard1Data] = React.useState<Card | undefined>();
@@ -62,7 +62,7 @@ export default function Home() {
 
       <br />
 
-      <Carrossel numberOfCards={5} />
+      <Selector numberOfCards={5} />
     </div>
   );
 }

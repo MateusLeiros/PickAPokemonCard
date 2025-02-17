@@ -3,7 +3,7 @@ import pkmBack from "../assets/pkmBack.jpg";
 import { getCardByID, Card } from "../api/GetCard.tsx";
 import Button from "./Button.tsx";
 
-export default function Carrossel({ numberOfCards }: carrosselProps) {
+export default function Selector({ numberOfCards }: SelectorProps) {
   const [cardData, setCardData] = React.useState<Array<Card>>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [, setError] = React.useState<unknown>(null);
@@ -11,7 +11,7 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
     Math.floor(numberOfCards / 2)
   );
 
-  const fetchCarrosselData = React.useCallback(async () => {
+  const fetchSelectorData = React.useCallback(async () => {
     try {
       const newArray = [];
       setLoading(true);
@@ -26,20 +26,20 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
     setLoading(false);
   }, [numberOfCards]);
 
-  const carrosselOrderFocus = React.useCallback(
+  const selectorOrderFocus = React.useCallback(
     function (order: string) {
       switch (order) {
         case "right":
           if (focusIndex < numberOfCards - 1) {
             setFocusIndex(focusIndex + 1);
-          }else{
+          } else {
             setFocusIndex(0);
           }
           break;
         case "left":
           if (focusIndex > 0) {
             setFocusIndex(focusIndex - 1);
-          }else{
+          } else {
             setFocusIndex(numberOfCards - 1);
           }
           break;
@@ -51,8 +51,8 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
   );
 
   React.useEffect(() => {
-    fetchCarrosselData();
-  }, [fetchCarrosselData]);
+    fetchSelectorData();
+  }, [fetchSelectorData]);
 
   const imageClass = [
     "max-h-[350px] border-4 border-buttoncolor rounded-3xl brightness-50 transition duration-700",
@@ -62,12 +62,12 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
   }
 
   return (
-    <div className="mt-10 flex justify-around items-center h-[450px] w-[90vw] justify-self-center border-4 border-buttoncolor rounded-3xl">
+    <div className="mt-10 flex justify-around items-center h-[450px] w-[90vw] justify-self-center border-4 border-blue-500 rounded-3xl">
       <Button
         size="small"
         label="<<<"
         onClick={() => {
-          carrosselOrderFocus("left");
+          selectorOrderFocus("left");
         }}
       />
       <div className="flex">
@@ -77,8 +77,8 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
             src={loading ? pkmBack : card.image + "/low.png"}
             className={
               index != focusIndex
-                ? "max-h-[350px] border-4 border-buttoncolor rounded-3xl brightness-50 transition duration-700"
-                : "z-40 border-4 border-buttoncolor rounded-3xl transition duration-700 scale-[1.25]"
+                ? "max-h-[350px] border-4 border-blue-500 rounded-3xl brightness-50 transition duration-700"
+                : "z-40 border-4 border-blue-500 rounded-3xl transition duration-700 scale-[1.25]"
             }
           ></img>
         ))}
@@ -87,13 +87,13 @@ export default function Carrossel({ numberOfCards }: carrosselProps) {
         size="small"
         label=">>>"
         onClick={() => {
-          carrosselOrderFocus("right");
+          selectorOrderFocus("right");
         }}
       />
     </div>
   );
 }
 
-type carrosselProps = {
+type SelectorProps = {
   numberOfCards: number;
 };
