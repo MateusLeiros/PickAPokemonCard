@@ -24,14 +24,14 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
     setLoading(false);
   }, [numberOfCards]);
 
-  const nextCard = React.useCallback(() => {
+  const prevCard = React.useCallback(() => {
     setFocusIndex((focusIndex) => {
       if (focusIndex === numberOfCards - 1) return 0;
       return focusIndex + 1;
     });
   }, [numberOfCards]);
 
-  const prevCard = React.useCallback(() => {
+  const nextCard = React.useCallback(() => {
     setFocusIndex((focusIndex) => {
       if (focusIndex === 0) return numberOfCards - 1;
       return focusIndex - 1;
@@ -41,25 +41,38 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
   React.useEffect(() => {
     fetchCarouselData();
   }, [fetchCarouselData]);
-
+  
   return (
     <div className="h-full w-full relative">
-      <div className="h-full w-full flex overflow-hidden">
-        {cardData.map((card, index) => (
+      <div className="h-full max-h-[350px] w-full flex justify-center items-center overflow-hidden">
+        {cardData.map((card, index, arr) => (
+          <>
+          <img key={index-1} src={arr[(focusIndex-1)%5]? arr[(focusIndex-1)%5].image + "/low.png" : pkmBack} className={`translate-x-1/2 scale-75 brightness-50 ${index+1 === focusIndex ? "absolute" : "hidden"}`}></img>
           <img
             key={index}
-            src={card.image + "/low.png"}
-            className={index===focusIndex? 'block' : 'hidden'}
-          ></img>
+            src={loading ? pkmBack : card.image + "/low.png"}
+            className={index === focusIndex ? "block z-20" : "hidden"}
+            ></img>
+          <img key={index+1} src={arr[(focusIndex+1)%5]? arr[(focusIndex+1)%5].image + "/low.png" : pkmBack} className={`-translate-x-1/2 scale-75 brightness-50 ${index-1 === focusIndex ? "absolute" : "hidden"}`}></img>
+
+            </>
         ))}
+
+        {/* <img src={cardData[focusIndex].image + "/low.png"}></img> */}
+
+        <Button
+          size="square"
+          className="block absolute left-px"
+          label="<<<"
+          onClick={prevCard}
+        />
+        <Button
+          size="square"
+          className="block absolute right-px"
+          label=">>>"
+          onClick={nextCard}
+        />
       </div>
-      <Button size="small" label="<<<" onClick={prevCard} />
-      <Button
-        size="small"
-        className="block absolute"
-        label=">>>"
-        onClick={nextCard}
-      />
     </div>
   );
 }
