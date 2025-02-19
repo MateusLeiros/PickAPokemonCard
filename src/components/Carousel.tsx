@@ -1,5 +1,4 @@
-import React from "react";
-import pkmBack from "../assets/pkmBack.jpg";
+import React, { useEffect } from "react";
 import { getCardByID, Card } from "../api/GetCard.tsx";
 import Button from "./Button.tsx";
 
@@ -8,6 +7,8 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
   const [focusIndex, setFocusIndex] = React.useState(0);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [, setError] = React.useState<unknown>(null);
+
+  const cardRefs = React.useRef<Array<HTMLImageElement | null>>([]);
 
   const fetchCarouselData = React.useCallback(async () => {
     try {
@@ -25,40 +26,52 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
   }, [numberOfCards]);
 
   const prevCard = React.useCallback(() => {
-    setFocusIndex((focusIndex) => {
-      if (focusIndex === numberOfCards - 1) return 0;
-      return focusIndex + 1;
-    });
-  }, [numberOfCards]);
+    if (focusIndex > 0) {
+      setFocusIndex(focusIndex - 1);
+    } else {
+      setFocusIndex(cardData.length - 1);
+    }
+  }, [focusIndex, cardData]);
 
   const nextCard = React.useCallback(() => {
-    setFocusIndex((focusIndex) => {
-      if (focusIndex === 0) return numberOfCards - 1;
-      return focusIndex - 1;
-    });
-  }, [numberOfCards]);
+    if (focusIndex < cardData.length - 1) {
+      setFocusIndex(focusIndex + 1);
+    } else {
+      setFocusIndex(0);
+    }
+  }, [cardData, focusIndex]);
 
   React.useEffect(() => {
     fetchCarouselData();
   }, [fetchCarouselData]);
-  
+
+  useEffect(() => {
+    if (cardRefs.current[focusIndex]) {
+      cardRefs.current[focusIndex].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    }
+  }, [focusIndex]);
+
+  console.log(cardRefs.current);
   return (
-    <div className="h-full w-full relative">
-      <div className="h-full max-h-[350px] w-full flex justify-center items-center overflow-hidden">
-        {cardData.map((card, index, arr) => (
-          <>
-          <img key={index-1} src={arr[(focusIndex-1)%5]? arr[(focusIndex-1)%5].image + "/low.png" : pkmBack} className={`translate-x-1/2 scale-75 brightness-50 ${index+1 === focusIndex ? "absolute" : "hidden"}`}></img>
+    <div className="flex h-full w-full relative justify-center items-center">
+      <div
+        className="flex w-[350px] overflow-hidden gap-2"
+        id={"slider"}
+      >
+        {cardData.map((card, index) => (
           <img
-            key={index}
-            src={loading ? pkmBack : card.image + "/low.png"}
-            className={index === focusIndex ? "block z-20" : "hidden"}
-            ></img>
-          <img key={index+1} src={arr[(focusIndex+1)%5]? arr[(focusIndex+1)%5].image + "/low.png" : pkmBack} className={`-translate-x-1/2 scale-75 brightness-50 ${index-1 === focusIndex ? "absolute" : "hidden"}`}></img>
-
-            </>
+            key={card.id}
+            className="object-cover"
+            src={card.image + "/low.png"}
+            ref={(element) => {
+              cardRefs.current[index] = element;
+            }}
+          />
         ))}
-
-        {/* <img src={cardData[focusIndex].image + "/low.png"}></img> */}
 
         <Button
           size="square"
