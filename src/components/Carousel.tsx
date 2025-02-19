@@ -9,7 +9,6 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
   const [, setError] = React.useState<unknown>(null);
 
   const cardRefs = React.useRef<Array<HTMLImageElement | null>>([]);
-  const container = React.useRef<HTMLDivElement>(null);
 
   const fetchCarouselData = React.useCallback(async () => {
     try {
@@ -47,7 +46,7 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
   }, [fetchCarouselData]);
 
   useEffect(() => {
-    if (container.current && cardRefs.current[focusIndex]) {
+    if (cardRefs.current[focusIndex]) {
       cardRefs.current[focusIndex].scrollIntoView({
         behavior: "smooth",
         block: "center",
@@ -56,12 +55,12 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
     }
   }, [focusIndex]);
 
+  console.log(cardRefs.current);
   return (
     <div className="flex h-full w-full relative justify-center items-center">
       <div
         className="flex w-[350px] overflow-hidden gap-2"
         id={"slider"}
-        ref={container}
       >
         {cardData.map((card, index) => (
           <img
