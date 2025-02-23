@@ -65,7 +65,6 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
         {cardData.map((card, index) => (
           <img
             key={card.id}
-            className="object-cover"
             src={card.image + "/low.png"}
             ref={(element) => {
               cardRefs.current[index] = element;
