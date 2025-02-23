@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { getCardByID, Card } from "../api/GetCard.tsx";
+import ArrowLeft from "../assets/arrow-left.svg";
+import ArrowRight from "../assets/arrow-right.svg";
 import Button from "./Button.tsx";
 
 export default function Carousel({ numberOfCards }: CarouselProps) {
@@ -55,24 +57,30 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
     }
   }, [focusIndex]);
 
-  console.log(cardRefs.current);
   return (
     <div className="flex h-full w-full relative justify-center items-center">
       <div
-        className="flex w-[350px] overflow-hidden gap-2"
+        className="flex h-[510px] w-[90vw] overflow-hidden px-[65px] border-4 border-buttoncolor rounded-3xl"
         id={"slider"}
       >
         {cardData.map((card, index) => (
           <img
             key={card.id}
-            src={card.image + "/low.png"}
+            className={
+              `${
+                focusIndex == index
+                  ? "z-20 scale-[1]"
+                  : "brightness-50 scale-[0.8]"
+              }` + " h-[500px] transition duration-500"
+            }
+            src={card.image + "/high.png"}
             ref={(element) => {
               cardRefs.current[index] = element;
             }}
           />
         ))}
 
-        <Button
+        {/* <Button
           size="square"
           className="block absolute left-px"
           label="<<<"
@@ -83,8 +91,10 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
           className="block absolute right-px"
           label=">>>"
           onClick={nextCard}
-        />
+        /> */}
       </div>
+      <button className="rounded-l-3xl block absolute left-px w-[60px] h-full bg-black/30 hover:bg-black/70 z-50 transition duration-200" onClick={prevCard}>AAA</button>
+      <button className="rounded-r-3xl block absolute right-px w-[60px] h-full bg-black/30 hover:bg-black/70 z-50 transition duration-200" onClick={nextCard}>BBB</button>
     </div>
   );
 }

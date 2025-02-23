@@ -41,13 +41,22 @@ export default function Home() {
 
   return (
     <div>
+      <div>
+        <Carousel numberOfCards={7} />
+      </div>
+
       <div className="mt-10 flex justify-self-start justify-around items-center h-[450px] w-[40vw] border-4 border-buttoncolor rounded-3xl">
         <div className="w-1/3 flex flex-col gap-5 items-center">
           <span>Meet some Pokemon Cards:</span>
           <label className="text-3xl text-center">
             {card1Data === undefined ? "" : card1Data.name}
           </label>
-          <Button label="New Card" size="small" onClick={handleClick} isLoading={loading} />
+          <Button
+            label="New Card"
+            size="small"
+            onClick={handleClick}
+            isLoading={loading}
+          />
         </div>
 
         <LoadingPBIcon isLoading={loading}></LoadingPBIcon>
@@ -59,10 +68,6 @@ export default function Home() {
           ></img>
         </div>
       </div>
-
-      <br />
-
-      <Carousel numberOfCards={5} />
     </div>
   );
 }
