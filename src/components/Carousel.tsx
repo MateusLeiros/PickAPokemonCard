@@ -85,11 +85,11 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
         ))}
         <ArrowLeft
           onClick={prevCard}
-          className="block absolute rounded-r-full left-px w-[60px] h-[99%] bg-black/30 hover:bg-black/70 z-50 transition duration-200 fill-white/50 hover:fill-white"
+          className="block absolute cursor-pointer rounded-r-full left-px w-[60px] h-[99%] bg-black/30 hover:bg-black/70 z-50 transition duration-200 fill-white/50 hover:fill-white"
         />
         <ArrowRight
           onClick={nextCard}
-          className="block absolute rounded-l-full right-px w-[60px] h-[99%] bg-black/30 hover:bg-black/70 z-50 transition duration-200 fill-white/50 hover:fill-white"
+          className="block absolute cursor-pointer rounded-l-full right-px w-[60px] h-[99%] bg-black/30 hover:bg-black/70 z-50 transition duration-200 fill-white/50 hover:fill-white"
         />
       </div>
     </div>
