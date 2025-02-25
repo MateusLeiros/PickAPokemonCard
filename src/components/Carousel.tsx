@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { getCardByID, Card } from "../api/GetCard.tsx";
-import ArrowLeft from "../assets/arrow-left.svg";
-import ArrowRight from "../assets/arrow-right.svg";
-import Button from "./Button.tsx";
+import ArrowLeft from "../assets/arrow-left.svg?react";
+import ArrowRight from "../assets/arrow-right.svg?react";
+import LoadingPBIcon from "../components/LoadingPBIcon.tsx";
 
 export default function Carousel({ numberOfCards }: CarouselProps) {
   const [cardData, setCardData] = React.useState<Array<Card>>([]);
@@ -60,9 +60,13 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
   return (
     <div className="flex h-full w-full relative justify-center items-center">
       <div
-        className="flex h-[510px] w-[90vw] overflow-hidden px-[65px] border-4 border-buttoncolor rounded-3xl"
+        className="flex h-[510px] w-[90vw] overflow-hidden px-[65px] border-2 border-buttoncolor rounded-md"
         id={"slider"}
       >
+        <div className="m-auto">
+          <LoadingPBIcon isLoading={loading}></LoadingPBIcon>
+        </div>
+
         {cardData.map((card, index) => (
           <img
             key={card.id}
@@ -79,22 +83,15 @@ export default function Carousel({ numberOfCards }: CarouselProps) {
             }}
           />
         ))}
-
-        {/* <Button
-          size="square"
-          className="block absolute left-px"
-          label="<<<"
+        <ArrowLeft
           onClick={prevCard}
+          className="block absolute rounded-r-full left-px w-[60px] h-[99%] bg-black/30 hover:bg-black/70 z-50 transition duration-200 fill-white/50 hover:fill-white"
         />
-        <Button
-          size="square"
-          className="block absolute right-px"
-          label=">>>"
+        <ArrowRight
           onClick={nextCard}
-        /> */}
+          className="block absolute rounded-l-full right-px w-[60px] h-[99%] bg-black/30 hover:bg-black/70 z-50 transition duration-200 fill-white/50 hover:fill-white"
+        />
       </div>
-      <button className="rounded-l-3xl block absolute left-px w-[60px] h-full bg-black/30 hover:bg-black/70 z-50 transition duration-200" onClick={prevCard}>AAA</button>
-      <button className="rounded-r-3xl block absolute right-px w-[60px] h-full bg-black/30 hover:bg-black/70 z-50 transition duration-200" onClick={nextCard}>BBB</button>
     </div>
   );
 }
