@@ -17,7 +17,7 @@ export default function Menu({ links }: MenuProps) {
   }
 
   const linksArray: Array<JSX.Element> = links.map((element) => (
-    <NavLink to={element.url}>{element.name}</NavLink>
+    <NavLink key={element.url} to={element.url}>{element.name}</NavLink>
   ));
 
   return (

@@ -1,7 +1,10 @@
 export default function CreateADeck() {
   return (
     <div>
-      <h1>Essa é a página de criação de decks</h1>
+      <label>Cartas por página:</label>
+      <input></input>
+      <label>Pesquisa de cartas</label>
+      <select></select>
     </div>
   );
 }
