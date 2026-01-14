@@ -1,7 +1,9 @@
 import { clientApi } from "./client.ts";
 
-export async function getCardByID(pkmId: number) {
-  const response = await clientApi.get<Card>("cards/swsh3-" + pkmId);
+export async function getCardsPaginated(page: number, itemsPerPage: number) {
+  const response = await clientApi.get<Card[]>(
+    `cards?pagination:page=${page}&pagination:itemsPerPage=${itemsPerPage}`
+  );
   return response.data;
 }
 
